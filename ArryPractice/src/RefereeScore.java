@@ -5,15 +5,25 @@ import java.util.Scanner;
 
 public class RefereeScore {
     public static void main(String[] args) {
-        System.out.println("请输入裁判的打分");
 
         double[] score=new double[6];
         Scanner sc=new Scanner(System.in);
         int i;
+        double num=sc.nextInt();
+        System.out.println("line 13 ok");
         //得到6位评委的打分
         for (i =0;i<score.length;i++){
-            score[i]=sc.nextInt();
+            System.out.println("请输入第"+(i+1)+"位裁判的打分");
+            //判断数据合法性
+            if(num>=0&&num<=100)
+                score[i]=sc.nextInt();
+            else {
+                System.out.println("您输入的成绩有误，请输入0-100的成绩");
+                i--;
+            }
         }
+
+        System.out.println("line 25 ok");
 
         //得到max和min
         double max=score[0];
@@ -27,6 +37,8 @@ public class RefereeScore {
                 min=score[i];
             }
         }
+        System.out.println("line 40 ok");
+
         //求和
         double sum=0;
         for (i =0;i<score.length;i++){
